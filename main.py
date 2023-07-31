@@ -43,6 +43,11 @@ while hasMore:
 
 print("Loaded all pages")
 
+titles = [image[0] for image in images]
+file = open("titles.json", 'w')
+file.write(json.dumps(titles))
+file.close()
+
 for i in range(len(images)):
     name, location = images[i]
     image = get_page(location)
