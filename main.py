@@ -37,15 +37,16 @@ while hasMore:
 
     for illustration in data['illos']:
         images.append((
-            illustration['title'],
+            illustration['title'].replace(" ", "_").lower(),
             illustration['image']
         ))
 
 print("Loaded all pages")
 
 titles = [image[0] for image in images]
-file = open("titles.json", 'w')
-file.write(json.dumps(titles))
+file = open("titles.js", 'w')
+file.write('export default ')
+file.write(json.dumps(titles, indent=2))
 file.close()
 
 for i in range(len(images)):
